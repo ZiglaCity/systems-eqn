@@ -18,7 +18,7 @@ public class Main {
         A[2] = new double[]{0, 2, 3, 2};
         A[3] = new double[]{0, 0, 2, 3};
 
-        double[] d = new double[]{12, 17, 14, 7};
+        double[] d = new double[]{12, 17, 10, 7};
         Thomas thomas = new Thomas(A, d);
         double[] result = thomas.ThomasAlgorithm();
         System.out.println("Final result after thomas Algorithm: \n " + Arrays.toString(result));

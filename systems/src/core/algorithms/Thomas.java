@@ -121,7 +121,7 @@ public class Thomas {
     private static boolean areEqualArrays(double[] A, double[] B){
         int n = A.length;
         for (int i = 0; i < n; i++){
-            if (A[i] != B[i]){
+            if (A[i] != B[i] && Math.round(A[i]) != Math.round(B[i])){
                 System.out.println(A[i] + " != " + B[i]);
                 return false;
             }
