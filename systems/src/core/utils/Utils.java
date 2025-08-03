@@ -167,4 +167,26 @@ public class Utils {
         return matrix;
     }
 
+    public static void toString(double[] array){
+        System.out.println("The Array: ");
+        System.out.println(Arrays.toString(array));
+    }
+
+    public static void toString(double[][] matrix){
+        System.out.println("The Matrix: ");
+        for(double[] mat: matrix){
+            System.out.println(Arrays.toString(mat));
+        }
+    }
+
+    public static double[][] cloneMatrix(double[][] matrix){
+        int r = matrix.length;
+        int c = matrix[0].length;
+        double[][] clonedMatrix = new double[r][c];
+        for(int i = 0; i < r; i++){
+            clonedMatrix[i] = matrix[i].clone();
+        }
+        return clonedMatrix;
+    }
+
 }

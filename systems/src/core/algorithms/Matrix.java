@@ -120,5 +120,12 @@ public class Matrix {
         return result;
     }
 
+    public static double[][] MatrixInverse(double[][] A){
+        int rows = A.length;
+        int cols = A[0].length;
+        double[][] inverse = new double[rows][cols];
 
+//        will do that later...
+        return inverse;
+    }
 }
