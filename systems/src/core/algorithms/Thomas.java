@@ -66,8 +66,21 @@ public class Thomas {
     }
 
     public static boolean isTridiagonal(double[][] A){
-//        confirm if a matrix is tridiagonal to use the thomas algorithm
-
+        int n = A.length;
+        for (int r = 0; r < n; r++){
+            for (int c = r + 2; c < n; c++){
+                if (A[r][c] != 0){
+                    return false;
+                }
+            }
+        }
+        for (int r = 2; r < n; r++){
+            for (int c = 0; c < r - 1; c++){
+                if (A[r][c] != 0){
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
