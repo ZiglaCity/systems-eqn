@@ -23,9 +23,23 @@ public class Main {
 //        double[] jacobResult = jacobi.JacobiAlgorithm(20);
 //        System.out.println("Final answer after "+ 5 + " iterations " + Arrays.toString(jacobResult));
 
-        GaussSeidel seidel = new GaussSeidel(A, d, null);
-        double[] seidelResult = seidel.GaussSeidelAlgorithm(20);
-        System.out.println("Final answer after "+ 20 + " iterations " + Arrays.toString(seidelResult));
+//        GaussSeidel seidel = new GaussSeidel(A, d, null);
+//        double[] seidelResult = seidel.GaussSeidelAlgorithm(20);
+//        System.out.println("Final answer after "+ 20 + " iterations " + Arrays.toString(seidelResult));
+
+
+        double[][] Mat = new double[3][3];
+        Mat[0] = new double[]{3, 2, 0};
+        Mat[1] = new double[]{2, 3, 2};
+        Mat[2] = new double[]{0, 2, 3};
+        double[] X = new double[]{0, 0, 2};
+//        System.out.println(Arrays.toString(Matrix.MatrixMultiplication(Mat, X) ));
+
+        ThePowerMethods power = new ThePowerMethods(Mat, X, new double[Mat.length]);
+        power.DirectMethod(10);
+        System.out.println(Arrays.toString(power.getLargestEigenVector()));
+        System.out.println(power.getLargestEigenValue());
+        System.out.println(power.confirmLargestEigenValueAndVector());
 
 //        double[][] B = new double[2][3];
 //        B[0] = new double[]{1, 3, 2};

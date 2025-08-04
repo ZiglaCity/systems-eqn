@@ -48,6 +48,29 @@ public class Matrix {
         return matrixAB;
     }
 
+    public static double[] MatrixMultiplication (double[][] matrixA, double[] matrixB){
+        int rowA = matrixA.length;
+        int colA = matrixA[0].length;
+        int rowB = matrixB.length;
+        int colB = 1;
+
+        if (colA != rowB){
+            System.out.println("Matrix A and B are not compatible");
+            throw new Error("The matrices are not compatible");
+        }
+
+        double[] matrixAB = new double[rowA];
+        for (int r = 0; r < rowA; r++){
+            for (int c = 0; c < colB; c++){
+                matrixAB[r] = 0.0;
+                for (int x = 0; x < colA; x++){
+                    matrixAB[r] += (matrixA[r][x] * matrixB[x]);
+                }
+            }
+        }
+        return matrixAB;
+    }
+
     public static double[][] MatrixAddition(double[][] A, double[][] B){
         int rowA = A.length;
         int rowB = B.length;
@@ -118,6 +141,16 @@ public class Matrix {
             }
         }
         return result;
+    }
+
+    public static double getMax(double[] array){
+        double largest = array[0];
+        for(double number: array){
+            if (number > largest){
+                largest = number;
+            }
+        }
+        return largest;
     }
 
     public static double[][] MatrixInverse(double[][] A){

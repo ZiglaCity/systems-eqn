@@ -1,4 +1,9 @@
 package core.algorithms;
+import core.algorithms.Matrix;
+
+import java.util.Arrays;
+import java.util.OptionalDouble;
+import java.util.stream.StreamSupport;
 
 public class ThePowerMethods {
     public double[][] A;
@@ -26,12 +31,28 @@ public class ThePowerMethods {
         this.B = new double[rows];
     }
 
-    public static void DirectMethod(){
+    public void DirectMethod(int iterations){
+//        AX = yX
 
+        int i = iterations;
+        double[] prevX = X.clone();
+        double largest = 0;
+        while(i-- > 0){
+            double[] nextX = Matrix.MatrixMultiplication(A, prevX);
+            System.out.println(Arrays.toString(nextX));
+            largest = Matrix.getMax(nextX);
+            for (int j = 0; j < rows; j++){
+//          first make sure largest is not zero;
+                nextX[j] /= largest;
+            }
+            prevX = nextX;
+        }
+        this.largestEigenValue = largest;
+        this.largestEigenVector = prevX;
     }
 
     public static void InverseMethod(){
-
+//    before doing this i need to finish the inverse matrix in the Matrix class, and bro.....!
     }
 
     public static void EigenMethod(){
@@ -60,6 +81,27 @@ public class ThePowerMethods {
 
     public double[] getEigenVector(){
         return this.eigenVector;
+    }
+
+    public boolean confirmLargestEigenValueAndVector(){
+        double[] AX = Matrix.MatrixMultiplication(this.A, this.largestEigenVector);
+        double[] YX = new double[rows];
+
+        for(int i = 0; i < rows; i++){
+            YX[i] = this.largestEigenValue * this.largestEigenVector[i];
+        }
+
+        System.out.println("AX: " + Arrays.toString(AX));
+        System.out.println("YX: " + Arrays.toString(YX));
+
+        for(int i = 0; i < rows; i++){
+            if(AX[i] != YX[i] && Math.round(AX[i]) != Math.round(YX[i])){
+                System.out.println("Final largest eigen value seems not to be right please crosscheck");
+                return false;
+            }
+        }
+        System.out.println("Final eigen value and vector confirmed to be right... Kudos Zigla!!");
+        return true;
     }
 
 }
