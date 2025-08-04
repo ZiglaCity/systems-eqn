@@ -2,7 +2,6 @@ package core.algorithms;
 
 import core.utils.Utils;
 
-import java.rmi.server.UID;
 import java.util.Arrays;
 
 public class Jacobi {
@@ -38,7 +37,7 @@ public class Jacobi {
         else this.X = new double[rows];
     }
 
-    public double[] JocobiAlgorithm(int iterations){
+    public double[] JacobiAlgorithm(int iterations){
 
         int i = iterations;
         double[] prevX = X.clone();
