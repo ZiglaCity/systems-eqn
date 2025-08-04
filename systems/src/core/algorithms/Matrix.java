@@ -128,4 +128,10 @@ public class Matrix {
 //        will do that later...
         return inverse;
     }
+
+    public static double Determinant(double[][] A){
+//        determinant of a matrix bro(easy?? prolly, complex?? swears!)... nah i think i'll do it later
+
+        return -1;
+    }
 }

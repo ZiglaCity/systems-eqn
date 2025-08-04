@@ -1,5 +1,4 @@
 package core.algorithms;
-import core.algorithms.Jacobi;
 import core.utils.Utils;
 
 import java.util.Arrays;
