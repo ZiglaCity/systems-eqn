@@ -41,27 +41,26 @@ public class Jacobi {
 
         int i = iterations;
         double[] prevX = X.clone();
-        Utils.toString(A);
-        Utils.toString(prevX);
-        Utils.toString(d);
         while(i-- > 0){
-            double[] currentX = prevX.clone();
-            System.out.println("Current X: " + Arrays.toString(currentX));
+            double[] nextX = new double[rows];
             for(int r = 0; r < rows; r++){
                 System.out.println("X_"+r);
-                double value = 0;
+                double sum = 0;
                 for(int c = 0; c < rows; c++){
                     if(c != r){
-                        value += (A[r][c] * currentX[c]);
-                        System.out.println("Value: "+ value);
+                        sum += (A[r][c] * prevX[c]);
+                        System.out.println("Sum: "+ sum);
                     }
                 }
-                prevX[r] = (d[r] - value) / A[r][r];
+                nextX[r] = (d[r] - sum) / A[r][r];
             }
-            System.out.println("Current X state after " + (iterations - i) + " iterations");
-            System.out.println(Arrays.toString(prevX));
+
+            prevX = nextX;
             this.X = prevX;
-            isAnswerCLoseOrCorrect();
+            System.out.println("Current X state after " + (iterations - i) + " iterations " + Arrays.toString(prevX));
+            if(isAnswerCLoseOrCorrect()){
+                return prevX;
+            }
         }
         return prevX;
     }

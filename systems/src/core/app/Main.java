@@ -1,10 +1,8 @@
 package core.app;
 
-import core.algorithms.GaussJordan;
+import core.algorithms.*;
 import core.utils.Utils;
-import core.algorithms.Matrix;
-import core.algorithms.Thomas;
-import core.algorithms.Jacobi;
+
 import java.util.Arrays;
 
 public class Main {
@@ -21,9 +19,13 @@ public class Main {
 //        double[] result = thomas.ThomasAlgorithm();
 //        System.out.println("Final result after thomas Algorithm: \n " + Arrays.toString(result));
 
-        Jacobi jacobi = new Jacobi(A, d, null);
-        double[] jacobResult = jacobi.JacobiAlgorithm(20);
-        System.out.println("Final answer after "+ 5 + " iterations " + Arrays.toString(jacobResult));
+//        Jacobi jacobi = new Jacobi(A, d, null);
+//        double[] jacobResult = jacobi.JacobiAlgorithm(20);
+//        System.out.println("Final answer after "+ 5 + " iterations " + Arrays.toString(jacobResult));
+
+        GaussSeidel seidel = new GaussSeidel(A, d, null);
+        double[] seidelResult = seidel.GaussSeidelAlgorithm(20);
+        System.out.println("Final answer after "+ 20 + " iterations " + Arrays.toString(seidelResult));
 
 //        double[][] B = new double[2][3];
 //        B[0] = new double[]{1, 3, 2};
