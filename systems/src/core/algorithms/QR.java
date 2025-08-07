@@ -24,7 +24,7 @@ public class QR {
             System.out.println("Slight inconsistencies with QR != A...");
         }
         this.A = Utils.cloneMatrix(A_i);
-        double[][] temp = new double[][];
+        double[][] temp;
         temp = Utils.cloneMatrix(this.Q);
         this.Q = Utils.cloneMatrix(this.R);
         this.R = Utils.cloneMatrix(temp);
@@ -45,7 +45,7 @@ public class QR {
 
 
 
-    public void checkNbyN(double[][] A)]{
+    public void checkNbyN(double[][] A){
         if(A.length != A[0].length){
             System.out.println("THe given matrix A is not an N by N matrix");
             throw new Error("Different row and column sizes in matrix");
