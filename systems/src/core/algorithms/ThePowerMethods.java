@@ -1,9 +1,6 @@
 package core.algorithms;
 import core.algorithms.Matrix;
-
 import java.util.Arrays;
-import java.util.OptionalDouble;
-import java.util.stream.StreamSupport;
 
 public class ThePowerMethods {
     public double[][] A;
