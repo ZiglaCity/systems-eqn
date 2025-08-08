@@ -1,7 +1,6 @@
 package core.algorithms;
 
 import core.utils.Utils;
-import jdk.jshell.execution.Util;
 
 import java.util.Arrays;
 
@@ -33,20 +32,14 @@ public class QR {
             if (!confirmQRequalsA(Q, R)) {
                 System.out.println("Slight inconsistencies with QR != A... at Iteration: "+i);
             }
-//            double[][] temp;
-//            temp = Utils.cloneMatrix(this.Q);
-//            this.Q = Utils.cloneMatrix(this.R);
-//            this.R = Utils.cloneMatrix(temp);
 
             double[][] A_i = getSimilarA(this.Q, this.R);
-//             Utils.toString(Q);
-//             Utils.toString(R);
-
             this.A = Utils.cloneMatrix(A_i);
-            i++;
+
             if(RisUpperDiagonalOrCloser(A)){
                 break;
             }
+            i++;
         }
 
         extractEigenValues();
@@ -114,7 +107,7 @@ public class QR {
     }
 
     public double[][] getSimilarA(double[][] Q, double[][] R){
-//        a nww A, = RQ is obtained...
+//        a nww A' = RQ is obtained...
         return Matrix.MatrixMultiplication(R, Q);
     }
 
