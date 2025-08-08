@@ -28,18 +28,27 @@ public class Main {
 //        System.out.println("Final answer after "+ 20 + " iterations " + Arrays.toString(seidelResult));
 
 
-        double[][] Mat = new double[3][3];
-        Mat[0] = new double[]{3, 2, 0};
-        Mat[1] = new double[]{2, 3, 2};
-        Mat[2] = new double[]{0, 2, 3};
+//        double[][] Mat = new double[3][3];
+//        Mat[0] = new double[]{3, 2, 0};
+//        Mat[1] = new double[]{2, 3, 2};
+//        Mat[2] = new double[]{0, 2, 3};
+
+        double[][] M = new double[3][3];
+        M[0] = new double[]{1, 1, 2};
+        M[1] = new double[]{2, 1, 1};
+        M[2] = new double[]{1, 1, 3};
+
+        QR qr = new QR(M);
+        qr.QRmethod(3);
+        System.out.println("The eigenvalues " + Arrays.toString(qr.getEigenValues()));
         double[] X = new double[]{0, 0, 2};
 //        System.out.println(Arrays.toString(Matrix.MatrixMultiplication(Mat, X) ));
 
-        ThePowerMethods power = new ThePowerMethods(Mat, X, new double[Mat.length]);
-        power.DirectMethod(10);
-        System.out.println(Arrays.toString(power.getLargestEigenVector()));
-        System.out.println(power.getLargestEigenValue());
-        System.out.println(power.confirmLargestEigenValueAndVector());
+//        ThePowerMethods power = new ThePowerMethods(Mat, X, new double[Mat.length]);
+//        power.DirectMethod(10);
+//        System.out.println(Arrays.toString(power.getLargestEigenVector()));
+//        System.out.println(power.getLargestEigenValue());
+//        System.out.println(power.confirmLargestEigenValueAndVector());
 
 //        double[][] B = new double[2][3];
 //        B[0] = new double[]{1, 3, 2};

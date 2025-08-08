@@ -1,5 +1,7 @@
 package core.algorithms;
 
+import core.utils.Utils;
+
 public class Matrix {
 
     public static double[][] MatrixMultiplication (double[][] matrixA, double[][] matrixB){
@@ -69,6 +71,14 @@ public class Matrix {
             }
         }
         return matrixAB;
+    }
+
+    public static double MatrixMultiplication(double[] A, double[] B){
+        double res = 0;
+        for(int i = 0; i < A.length; i++){
+            res += A[i] * B[i];
+        }
+        return res;
     }
 
     public static double[][] MatrixAddition(double[][] A, double[][] B){
@@ -155,7 +165,7 @@ public class Matrix {
 
         for (int r = 0; r < rowsA; r++){
             for(int c = 0; c < colsA; c++){
-                if (A[r][c] != B[r][c]){
+                if (A[r][c] != B[r][c] && Math.round(A[r][c]) != Math.round(B[r][c])){
                     return false;
                 }
             }
@@ -174,6 +184,40 @@ public class Matrix {
         return largest;
     }
 
+    public static double[][] Transpose(double[][] A){
+        int rows = A.length;
+        int cols = A[0].length;
+        double[][] AT = new double[cols][rows];
+        for(int r = 0; r < cols; r++){
+            for (int c = 0; c < rows; c++){
+                AT[r][c] = A[c][r];
+            }
+        }
+        return AT;
+    }
+
+    public static double[][] Transpose(double[] A){
+        Utils.toString(A);
+        int rows = 1;
+        int cols = A.length;
+        double[][] AT = new double[rows][cols];
+        for (int c = 0; c < rows; c++){
+            AT[0][c] = A[c];
+        }
+        Utils.toString(AT);
+
+        return AT;
+    }
+
+
+    public static double Magnitude(double[] A){
+        double sum_of_squares = 0;
+        for(double number : A){
+            sum_of_squares += Math.pow(number, 2);
+        }
+        return Math.sqrt(sum_of_squares);
+    }
+
     public static double[][] MatrixInverse(double[][] A){
         int rows = A.length;
         int cols = A[0].length;
@@ -187,5 +231,21 @@ public class Matrix {
 //        determinant of a matrix bro(easy?? prolly, complex?? swears!)... nah i think i'll do it later
 
         return -1;
+    }
+
+    public static double[] MatrixAddition(double[] A, double[] B) {
+        double[] sum = new double[A.length];
+        for (int i = 0; i < A.length; i++){
+            sum[i] = A[i] + B[i];
+        }
+        return sum;
+    }
+
+    public static double[] MatrixSubtraction(double[] A, double[] B) {
+        double[] diff = new double[A.length];
+        for (int i = 0; i < A.length; i++){
+            diff[i] = A[i] - B[i];
+        }
+        return diff;
     }
 }
