@@ -143,6 +143,27 @@ public class Matrix {
         return result;
     }
 
+    public static boolean isIdenticalMatrix(double[][] A, double[][] B){
+        int rowsA = A.length;
+        int colsA = A[0].length;
+        int rowsB = B.length;
+        int colsB = B[0].length;
+
+        if (rowsA != rowsB || colsA != colsB){
+            return false;
+        }
+
+        for (int r = 0; r < rowsA; r++){
+            for(int c = 0; c < colsA; c++){
+                if (A[r][c] != B[r][c]){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public static double getMax(double[] array){
         double largest = array[0];
         for(double number: array){
