@@ -11,6 +11,7 @@ public class QR {
     private double[][] Q;
     private double[][] R;
     public double[] eigenValues;
+    public double precision = 0.0001;
 
     public QR (double[][] A){
         checkNbyN(A);
@@ -23,7 +24,7 @@ public class QR {
 
     public void QRmethod(int iterator){
         int i = 0;
-        while (!RisUpperDiagonalOrCloser(R) && i < iterator) {
+        while (i < iterator) {
             System.out.println("Iteration: "+i);
             double[][][] qr = getQR(this.A);
             this.Q = qr[0];
@@ -43,6 +44,9 @@ public class QR {
 
             this.A = Utils.cloneMatrix(A_i);
             i++;
+            if(RisUpperDiagonalOrCloser(A)){
+                break;
+            }
         }
 
         extractEigenValues();
@@ -116,7 +120,14 @@ public class QR {
 
     public boolean RisUpperDiagonalOrCloser(double[][] R){
 //        check how close r is to being a UpperDiagonal
-        return false;
+        for (int r= 1; r < rows; r++){
+            for (int c = 0; c < r; c++){
+                if(R[r][c] > precision){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public boolean confirmQRequalsA(double[][] Q, double[][] R){
@@ -146,5 +157,9 @@ public class QR {
             throw new Error("Different row and column sizes in matrix");
         }
         this.rows = A.length;
+    }
+
+    public void setPrecision(double precision){
+        this.precision = precision;
     }
 }

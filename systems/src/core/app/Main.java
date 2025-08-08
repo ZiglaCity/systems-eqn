@@ -39,7 +39,7 @@ public class Main {
         M[2] = new double[]{1, 1, 3};
 
         QR qr = new QR(M);
-        qr.QRmethod(3);
+        qr.QRmethod(30);
         System.out.println("The eigenvalues " + Arrays.toString(qr.getEigenValues()));
         double[] X = new double[]{0, 0, 2};
 //        System.out.println(Arrays.toString(Matrix.MatrixMultiplication(Mat, X) ));
